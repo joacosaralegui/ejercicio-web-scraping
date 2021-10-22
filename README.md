@@ -38,11 +38,11 @@ o probarlo de forma manual desde [http://localhost:8002/docs](http://localhost:8
 ### Comando para el container Docker
 Ejecutar para extraer lista de links (se puede concatenar con un '> links.csv' para guardar en archivp)
 ```
-docker-compose exec web python get_links.py "https://google.com
+docker-compose exec web python get_links.py "https://google.com"
 ```
 Ejecutar para obtener ademas un pequeño análisis respecto a scrapings pasados
 ```
-docker-compose exec web python get_links.py -V "https://google.com
+docker-compose exec web python get_links.py -V "https://google.com"
 ```
 Comando de ayuda para la aplicacion de consola
 ```
