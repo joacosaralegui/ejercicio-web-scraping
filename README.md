@@ -52,7 +52,11 @@ docker-compose exec web python get_links.py -h
 ```
 
 ## Cómo desplegar en AWS
-Para el despliegue de esta aplicación desplegaría el contenedor Docker en Amazon Elastic Container Service (Amazon ECS). Esta aplicación administraría los dos servicios que se crean para esta aplicación: "web" que contiene la lógica de la aplicación, incluyendo la API y el archivo para ejecutar el comando por consola y "db" que contiene la base PostgreSQL para alamcenar los logs de los scrapings. ECS administra estos dos servicios de manera transparente y no requiere en principio cambios en la configuración del docker-compose. 
+Para el despliegue de esta aplicación desplegaría el contenedor Docker en Amazon Elastic Container Service (Amazon ECS). Esta aplicación administraría los dos servicios que se crean para esta aplicación: "web" que contiene la lógica de la aplicación, incluyendo la API y el archivo para ejecutar el comando por consola y "db" que contiene la base PostgreSQL para almacenar los logs de los scrapings. ECS administra estos dos servicios de manera transparente y no requiere en principio cambios en la configuración del docker-compose. Este sistema de gestión permitiría administrar el contenedor de manera sencilla y escalar la aplicación de ser necesario.
+
+### Porqué el uso de ASYNC
+Debido a que el web scraping es una tarea que lleva tiempo ya que involucra conectarse a la red y parsear un sitio web completo, utilizar un servicio de api asíncrona permite a la aplicación tomar mas pedidos y ejecutarlos de manera rápida pudiendo utilizar el tiempo de espera que se genera al conectarse a un sitio web para atender y procesar otros pedidos. Dependiendo de la demanda que tenga la aplicación, esto podría mejorar la performance en general.
+
 
 ### Warning
 El modulo de testing vacia la base y la vuelve a crear para mantener consistencia con los resultados.
