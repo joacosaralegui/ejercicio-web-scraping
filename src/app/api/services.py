@@ -20,7 +20,7 @@ async def handle_scraping_request(url : str) -> CrawlResponse:
     # Save log of crawl
     await store_scraping_log(url, amount_of_links)
 
-    # TODO: Compare to previous log to see if anything has changed!
+    # Compare to previous log to see if anything has changed!
     if log_before:
         amount_difference = amount_of_links - log_before.amount_of_links
         last_request_date = log_before.date
