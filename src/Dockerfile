@@ -1,6 +1,3 @@
-# TODO: Clean this up, remove unnecesary things
-# TODO: USE VIRTUAL ENV???
-
 # pull official base image
 FROM python:3.9.4-alpine
 

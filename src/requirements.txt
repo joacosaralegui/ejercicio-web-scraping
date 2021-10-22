@@ -4,7 +4,6 @@ fastapi==0.63.0
 psycopg2-binary==2.8.6
 SQLAlchemy==1.3.24
 uvicorn==0.13.4
-# TODO: Add versions to this?
 beautifulsoup4
 pydantic
 lxml

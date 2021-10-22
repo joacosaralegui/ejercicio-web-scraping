@@ -1,7 +1,5 @@
 version: '3.8'
 
-# TODO: Change postgresql credentials??
-
 services:
   web:
     build: ./src
