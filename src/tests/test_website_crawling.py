@@ -53,7 +53,6 @@ def test_empty_url(test_app):
     test_request_payload = {"url": "" }
 
     response = test_app.post("/scraping/", data=json.dumps(test_request_payload),)
-    response_dict = response.json()
 
     assert response.status_code == 404
 
