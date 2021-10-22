@@ -6,15 +6,21 @@ Ejercicio de prueba. Dado una URL, extrae todos los links contenidos en ese siti
 
 #### Build and run
 Ejecutar el siguiente comando desde la raíz del proyecto para hacer el build del Docker y poner a correr los containers.
-```docker-compose up -d --build```
+```
+docker-compose up -d --build
+```
  
 #### Test
 Correr tests
-```docker-compose exec web pytest .```
+```
+docker-compose exec web pytest .
+```
 
 #### Inspecccionar base de datos
 Para acceder a inspeccionar la base de desarrollo:
-```docker-compose exec db psql --username=sraping_websites --dbname=sraping_websites_dev ```
+```
+docker-compose exec db psql --username=sraping_websites --dbname=sraping_websites_dev
+```
 
 ### Uso
 
@@ -33,11 +39,17 @@ o probarlo de forma manual desde [http://localhost:8002/docs](http://localhost:8
 
 #### Comando para el container Docker
 Ejecutar para extraer lista de links (se puede concatenar con un '> links.csv' para guardar en archivp)
-```docker-compose exec web python get_links.py "https://google.com```
+```
+docker-compose exec web python get_links.py "https://google.com
+```
 Ejecutar para obtener ademas un pequeño análisis respecto a scrapings pasados
-```docker-compose exec web python get_links.py -V "https://google.com```
+```
+docker-compose exec web python get_links.py -V "https://google.com}
+```
 Comando de ayuda para la aplicacion de consola
-```docker-compose exec web python get_links.py -h```
+```
+docker-compose exec web python get_links.py -h
+```
 
 ### Warning
 El modulo de testing vacia la base y la vuelve a crear para mantener consistencia con los resultados.
