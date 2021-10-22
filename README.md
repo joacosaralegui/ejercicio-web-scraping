@@ -1,30 +1,28 @@
 # Extracción de links en sitios web
 
-Ejercicio de prueba. Dado una URL, extrae todos los links contenidos en ese sitio. Accesible tanto como endpoint de API (/scraping/) o como comando ejecutado en el container Docker.
+Ejercicio de prueba. Dado una URL, extrae todos los links contenidos en ese sitio. Accesible tanto como endpoint de API (/scraping/) o como comando ejecutado en el container Docker. Se implementó generando una aplicación en FastAPI, con una base de PostgreSQL administrada con el ORM SQLAlchemy, pydantic para los Schemas de los endpoints y Docker para la administración de dependencias y deployment. "get_links.py" es el archivo que permite ejecutar la aplicación por linea de comandos, y para la API, el docker-compose configura un servidor uvicorn para servir la app. La principal lógica para resolver el problema se encuentra en el archivo "src/app/api/services.py". Esta pensando como una aplicación asíncrona por lo que la adaptación para linea de comandos fue necesaria.
 
-### Development
+## Instrucciones
 
-#### Build and run
+### Buildear y ejecutar containers
 Ejecutar el siguiente comando desde la raíz del proyecto para hacer el build del Docker y poner a correr los containers.
 ```
 docker-compose up -d --build
 ```
  
-#### Test
+### Test
 Correr tests
 ```
 docker-compose exec web pytest .
 ```
 
-#### Inspecccionar base de datos
+### Inspecccionar base de datos
 Para acceder a inspeccionar la base de desarrollo:
 ```
 docker-compose exec db psql --username=sraping_websites --dbname=sraping_websites_dev 
 ```
 
-### Uso
-
-#### FastAPI entrypoint
+### FastAPI entrypoint
 Se puede ejecutar el comando POST directamente
 ```
 curl -X 'POST' \
@@ -37,7 +35,7 @@ curl -X 'POST' \
 ```
 o probarlo de forma manual desde [http://localhost:8002/docs](http://localhost:8002/docs) una vez 
 
-#### Comando para el container Docker
+### Comando para el container Docker
 Ejecutar para extraer lista de links (se puede concatenar con un '> links.csv' para guardar en archivp)
 ```
 docker-compose exec web python get_links.py "https://google.com
